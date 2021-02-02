@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.lucasbrandao.cadastroclientes.dto.ClienteDTO;
 import com.lucasbrandao.cadastroclientes.entities.ClienteEntity;
+import com.lucasbrandao.cadastroclientes.exceptions.UserPermissionsException;
 import com.lucasbrandao.cadastroclientes.mappers.ClienteMapper;
 import com.lucasbrandao.cadastroclientes.repositories.ClienteRepository;
 import com.lucasbrandao.cadastroclientes.security.UserAuthentication;
@@ -56,7 +57,7 @@ public class ClienteServiceImpl implements ClienteServiceInterface {
 	@Override
 	public void isAdmin() {
 		if (!this.getAuthenticatedDetails().getIsAdmin()) {
-			throw new RuntimeException("Usuário sem permissão para executar a operação.");
+			throw new UserPermissionsException("Usuário sem permissão para executar a operação.");
 		}
 	}
 }

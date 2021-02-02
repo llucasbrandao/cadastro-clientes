@@ -2,8 +2,8 @@ package com.lucasbrandao.cadastroclientes.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.lucasbrandao.cadastroclientes.entities.CidadeEntity;
 import com.lucasbrandao.cadastroclientes.enums.SexoEnum;
 
 public class ClienteDTO {
@@ -16,10 +16,13 @@ public class ClienteDTO {
 	private String email;
 	
 	private SexoEnum sexo; 
-
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dataNascimento;
 	
-	private CidadeEntity cidade;
+	private String cidade;
+	
+	private String estado;
 	
 	private Boolean isAdmin;
 	
@@ -27,8 +30,8 @@ public class ClienteDTO {
 	
 	public ClienteDTO() {}
 
-	public ClienteDTO(Integer id, String nomeCompleto, String email, SexoEnum sexo, Date dataNascimento,
-			CidadeEntity cidade, Boolean isAdmin, String senha) {
+	public ClienteDTO(Integer id, String nomeCompleto, String email, SexoEnum sexo, Date dataNascimento, String cidade,
+			String estado, Boolean isAdmin, String senha) {
 		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
@@ -36,6 +39,7 @@ public class ClienteDTO {
 		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
 		this.cidade = cidade;
+		this.estado = estado;
 		this.isAdmin = isAdmin;
 		this.senha = senha;
 	}
@@ -80,14 +84,6 @@ public class ClienteDTO {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public CidadeEntity getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(CidadeEntity cidade) {
-		this.cidade = cidade;
-	}
-
 	public Boolean getIsAdmin() {
 		return isAdmin;
 	}
@@ -102,5 +98,21 @@ public class ClienteDTO {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 }
