@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,6 +29,7 @@ public class ClienteEntity {
 	private String nomeCompleto;
 	
 	@Column()
+	@Enumerated(EnumType.STRING)
 	private SexoEnum sexo; 
 	
 	@Column(name = "DATA_NASCIMENTO")
@@ -39,31 +42,36 @@ public class ClienteEntity {
 	@Column(name = "IS_ADMIN")
 	private Boolean isAdmin;
 	
+	@Column()
+	private String senha;
+	
 	@Transient
 	private Integer idade;
 
 	public ClienteEntity() {}
 
 	public ClienteEntity(Integer id, String nomeCompleto, SexoEnum sexo, Date dataNascimento, CidadeEntity cidade,
-			Boolean isAdmin) {
-	
+			Boolean isAdmin, String senha) {
+		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
 		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
 		this.cidade = cidade;
 		this.isAdmin = isAdmin;
+		this.senha = senha;
 	}
 
 	public ClienteEntity(Integer id, String nomeCompleto, SexoEnum sexo, Date dataNascimento, CidadeEntity cidade,
-			Boolean isAdmin, Integer idade) {
-
+			Boolean isAdmin, String senha, Integer idade) {
+		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
 		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
 		this.cidade = cidade;
 		this.isAdmin = isAdmin;
+		this.senha = senha;
 		this.idade = idade;
 	}
 
@@ -113,6 +121,14 @@ public class ClienteEntity {
 
 	public void setIsAdmin(Boolean isAdmin) {
 		this.isAdmin = isAdmin;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public Integer getIdade() {
