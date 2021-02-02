@@ -89,6 +89,7 @@ public class DBInit {
 				clienteEntity.setCidade(this.cidadeRepository.findByNome("Porto Alegre"));
 				clienteEntity.setDataNascimento(new Date());
 				clienteEntity.setSenha(B_CRYPT.encode("123456"));
+				clienteEntity.setEmail("admin@admin.com.br");
 				
 				this.clienteRepository.saveAndFlush(clienteEntity);
 				
@@ -96,11 +97,12 @@ public class DBInit {
 				clienteEntity = new ClienteEntity();
 				
 				clienteEntity.setNomeCompleto("Usuário");
-				clienteEntity.setIsAdmin(true);
+				clienteEntity.setIsAdmin(false);
 				clienteEntity.setSexo(SexoEnum.M);
 				clienteEntity.setCidade(this.cidadeRepository.findByNome("Belo Horizonte"));
 				clienteEntity.setDataNascimento(new Date());
 				clienteEntity.setSenha(B_CRYPT.encode("123456"));
+				clienteEntity.setEmail("usuario@usuario.com.br");
 				
 				this.clienteRepository.saveAndFlush(clienteEntity);
 				

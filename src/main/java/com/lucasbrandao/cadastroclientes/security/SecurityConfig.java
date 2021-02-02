@@ -15,26 +15,26 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import com.lucasbrandao.cadastroclientes.services.impl.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	private UserDetailsService userDetailsService; 
+	private UserDetailsServiceImpl userDetailsService; 
 	
 	@Autowired
 	private JWTUtil jwtUtil;
 	
 	// Rotas abertas
 	private static final String[] PUBLIC_ROUTES = {
-			"/login",
-			"/api/v1/users/new"
+			"/login"
 	};
 	
 	// Rotas abertas que não permitem inserção de dados, apenas consultas

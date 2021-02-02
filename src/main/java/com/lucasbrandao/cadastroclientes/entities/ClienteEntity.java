@@ -29,6 +29,9 @@ public class ClienteEntity {
 	private String nomeCompleto;
 	
 	@Column()
+	private String email;
+	
+	@Column()
 	@Enumerated(EnumType.STRING)
 	private SexoEnum sexo; 
 	
@@ -49,24 +52,26 @@ public class ClienteEntity {
 	private Integer idade;
 
 	public ClienteEntity() {}
-
-	public ClienteEntity(Integer id, String nomeCompleto, SexoEnum sexo, Date dataNascimento, CidadeEntity cidade,
-			Boolean isAdmin, String senha) {
+	
+	public ClienteEntity(Integer id, String nomeCompleto, String email, SexoEnum sexo, Date dataNascimento,
+			CidadeEntity cidade, Boolean isAdmin, String senha) {
 		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
+		this.email = email;
 		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
 		this.cidade = cidade;
 		this.isAdmin = isAdmin;
 		this.senha = senha;
 	}
-
-	public ClienteEntity(Integer id, String nomeCompleto, SexoEnum sexo, Date dataNascimento, CidadeEntity cidade,
-			Boolean isAdmin, String senha, Integer idade) {
+	
+	public ClienteEntity(Integer id, String nomeCompleto, String email, SexoEnum sexo, Date dataNascimento,
+			CidadeEntity cidade, Boolean isAdmin, String senha, Integer idade) {
 		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
+		this.email = email;
 		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
 		this.cidade = cidade;
@@ -129,6 +134,14 @@ public class ClienteEntity {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public Integer getIdade() {

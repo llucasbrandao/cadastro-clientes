@@ -13,6 +13,8 @@ public class ClienteDTO {
 	
 	private String nomeCompleto;
 	
+	private String email;
+	
 	private SexoEnum sexo; 
 
 	private Date dataNascimento;
@@ -25,11 +27,12 @@ public class ClienteDTO {
 	
 	public ClienteDTO() {}
 
-	public ClienteDTO(Integer id, String nomeCompleto, SexoEnum sexo, Date dataNascimento, CidadeEntity cidade,
-			Boolean isAdmin, String senha) {
+	public ClienteDTO(Integer id, String nomeCompleto, String email, SexoEnum sexo, Date dataNascimento,
+			CidadeEntity cidade, Boolean isAdmin, String senha) {
 		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
+		this.email = email;
 		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
 		this.cidade = cidade;
@@ -51,6 +54,14 @@ public class ClienteDTO {
 
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public SexoEnum getSexo() {

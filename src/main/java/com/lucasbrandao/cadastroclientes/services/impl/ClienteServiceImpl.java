@@ -3,6 +3,7 @@ package com.lucasbrandao.cadastroclientes.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.lucasbrandao.cadastroclientes.dto.ClienteDTO;
 import com.lucasbrandao.cadastroclientes.entities.ClienteEntity;
@@ -11,6 +12,7 @@ import com.lucasbrandao.cadastroclientes.repositories.ClienteRepository;
 import com.lucasbrandao.cadastroclientes.security.UserAuthentication;
 import com.lucasbrandao.cadastroclientes.services.ClienteServiceInterface;
 
+@Service
 public class ClienteServiceImpl implements ClienteServiceInterface {
 	
 	@Autowired
