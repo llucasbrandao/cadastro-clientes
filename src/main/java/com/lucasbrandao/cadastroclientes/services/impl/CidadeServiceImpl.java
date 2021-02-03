@@ -1,5 +1,6 @@
 package com.lucasbrandao.cadastroclientes.services.impl;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lucasbrandao.cadastroclientes.dto.CidadeDTO;
+import com.lucasbrandao.cadastroclientes.dto.CidadeDTO.CidadeInterfaceDTO;
 import com.lucasbrandao.cadastroclientes.entities.CidadeEntity;
 import com.lucasbrandao.cadastroclientes.mappers.CidadeMapper;
 import com.lucasbrandao.cadastroclientes.repositories.CidadeRepository;
@@ -51,6 +53,11 @@ public class CidadeServiceImpl implements CidadeService {
 	}
 	
 	@Override
+	public CidadeDTO buscarPorNomeDTO(String nome) {
+		return cidadeMapper.toDTO(this.buscarPorNome(nome));
+	}
+	
+	@Override
 	public CidadeEntity buscarPorNomeAndSiglaEstado(String nome, String siglaEstado) {
 		Optional<CidadeEntity> cidadeEntity = cidadeRepository.findByNomeAndSiglaEstado(nome, siglaEstado);
 		
@@ -61,5 +68,15 @@ public class CidadeServiceImpl implements CidadeService {
 		
 		return cidadeEntity.get();
 		
+	}
+	
+	@Override
+	public List<CidadeInterfaceDTO> buscaCidadePeloNomeEstado(String nome, Integer limite, Integer offset) {
+		return cidadeRepository.buscaCidadesPeloNomeEstado(nome, limite < 100 ? limite : 100, offset);
+	}
+	
+	@Override
+	public List<CidadeInterfaceDTO> buscaCidadePelaSiglaEstado(String sigla, Integer limite, Integer offset) {
+		return cidadeRepository.buscaCidadesPelaSiglaEstado(sigla, limite < 100 ? limite : 100, offset);
 	}
 }

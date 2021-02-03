@@ -43,4 +43,9 @@ public class CidadeDTO {
 	public void setEstado(EstadoDTO estado) {
 		this.estado = estado;
 	}
+	
+	public interface CidadeInterfaceDTO {
+		Integer getId();
+		String getNome();
+	}
 }

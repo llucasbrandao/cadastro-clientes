@@ -37,8 +37,8 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 	
 	private ApiInfo metaData() {
 		return new ApiInfoBuilder()
-			.title("Restaurant REST API")
-			.description("Simple SpringBoot Restaurant REST API, built with SpingBoot, Swagger and Docker/Docker-Compose.")
+			.title("API que simula um simples cadastro de clientes")
+			.description("A simple SpringBoot Customer REST API built with SpringBoot, Swagger and Docker/Docker-Compose.")
 			.version("1.0.0")
 			.license("Apache License Version 2.0")
 			.licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
