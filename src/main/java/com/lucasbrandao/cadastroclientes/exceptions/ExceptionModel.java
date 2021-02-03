@@ -9,38 +9,31 @@ public class ExceptionModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String message;
-	private Date timeStamp;
+	private String mensagem;
 	private String url;
+	private Date timeStamp;
 	private HttpStatus httpStatus;
 	
 	public ExceptionModel() {}
 	
-	public ExceptionModel(String message) {
-		this.message = message;
+	public ExceptionModel(String mensagem) {
+		this.mensagem = mensagem;
 	}
-
-	public ExceptionModel(String message, Date timeStamp, String url, HttpStatus httpStatus) {
-		this.message = message;
-		this.timeStamp = timeStamp;
+	
+	public ExceptionModel(String mensagem, String url, Date timeStamp, HttpStatus httpStatus) {
+		super();
+		this.mensagem = mensagem;
 		this.url = url;
+		this.timeStamp = timeStamp;
 		this.httpStatus = httpStatus;
 	}
 
-	public String getMessage() {
-		return message;
+	public String getMensagem() {
+		return mensagem;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public Date getTimeStamp() {
-		return timeStamp;
-	}
-
-	public void setTimeStamp(Date timeStamp) {
-		this.timeStamp = timeStamp;
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
 	}
 
 	public String getUrl() {
@@ -51,11 +44,23 @@ public class ExceptionModel implements Serializable {
 		this.url = url;
 	}
 
+	public Date getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(Date timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+
 	public HttpStatus getHttpStatus() {
 		return httpStatus;
 	}
 
 	public void setHttpStatus(HttpStatus httpStatus) {
 		this.httpStatus = httpStatus;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 }

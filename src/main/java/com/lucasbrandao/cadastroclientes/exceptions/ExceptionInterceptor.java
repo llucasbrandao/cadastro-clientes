@@ -34,9 +34,10 @@ public class ExceptionInterceptor {
 		return new ResponseEntity<>(exceptionModel, exceptionModel.getHttpStatus());
 	}
 	
+	
 	private final ExceptionModel generateException(Exception ex, WebRequest request, HttpStatus httpStatus) {
-		return new ExceptionModel(ex.getMessage(), new Date(), 
-				((ServletWebRequest) request).getRequest().getRequestURI(), 
+		return new ExceptionModel(ex.getMessage(), 
+				((ServletWebRequest) request).getRequest().getRequestURI(), new Date(), 
 				httpStatus);
 	}
 }

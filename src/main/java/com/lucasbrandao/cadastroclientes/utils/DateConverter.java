@@ -12,6 +12,6 @@ public class DateConverter {
 	}
 	
 	public static Integer getYearsDifferenceFromNow(LocalDate date) {
-		return date == null ? 0 : (int) ChronoUnit.YEARS.between(LocalDate.now(), date);
+		return date == null ? 0 : (int) ChronoUnit.YEARS.between(date, LocalDate.now());
 	}
 }

@@ -4,8 +4,11 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.lucasbrandao.cadastroclientes.enums.SexoEnum;
 
+@JsonInclude(Include.NON_NULL)
 public class ClienteDTO {
 	
 	@JsonIgnore
@@ -28,10 +31,26 @@ public class ClienteDTO {
 	
 	private String senha;
 	
+	private Integer idade;
+	
 	public ClienteDTO() {}
 
 	public ClienteDTO(Integer id, String nomeCompleto, String email, SexoEnum sexo, Date dataNascimento, String cidade,
 			String estado, Boolean isAdmin, String senha) {
+		
+		this.id = id;
+		this.nomeCompleto = nomeCompleto;
+		this.email = email;
+		this.sexo = sexo;
+		this.dataNascimento = dataNascimento;
+		this.cidade = cidade;
+		this.estado = estado;
+		this.isAdmin = isAdmin;
+		this.senha = senha;
+	}
+
+	public ClienteDTO(Integer id, String nomeCompleto, String email, SexoEnum sexo, Date dataNascimento, String cidade,
+			String estado, Boolean isAdmin, String senha, Integer idade) {
 		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
@@ -42,6 +61,7 @@ public class ClienteDTO {
 		this.estado = estado;
 		this.isAdmin = isAdmin;
 		this.senha = senha;
+		this.idade = idade;
 	}
 
 	public Integer getId() {
@@ -91,7 +111,7 @@ public class ClienteDTO {
 	public void setIsAdmin(Boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
-
+	
 	public String getSenha() {
 		return senha;
 	}
@@ -114,5 +134,13 @@ public class ClienteDTO {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public Integer getIdade() {
+		return idade;
+	}
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
 	}
 }

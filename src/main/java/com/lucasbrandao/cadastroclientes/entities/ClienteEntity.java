@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,11 +15,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import com.lucasbrandao.cadastroclientes.enums.SexoEnum;
 import com.lucasbrandao.cadastroclientes.utils.DateConverter;
 
 @Entity
 @Table(name = "CLIENTE")
+@DynamicUpdate
 public class ClienteEntity {
 	
 	@Id
@@ -38,7 +42,7 @@ public class ClienteEntity {
 	@Column(name = "DATA_NASCIMENTO")
 	private Date dataNascimento;
 	
-	@OneToOne()
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CIDADE_ID")
 	private CidadeEntity cidade;
 	
