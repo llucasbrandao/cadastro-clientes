@@ -1,5 +1,8 @@
 package com.lucasbrandao.cadastroclientes.services;
 
-public interface EstadoService {
+import com.lucasbrandao.cadastroclientes.entities.EstadoEntity;
 
+public interface EstadoService {
+	
+	EstadoEntity findBySigla(String sigla);
 }

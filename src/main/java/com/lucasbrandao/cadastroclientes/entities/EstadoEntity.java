@@ -24,7 +24,6 @@ public class EstadoEntity {
 	public EstadoEntity() {}
 	
 	public EstadoEntity(Integer id, String nome, String sigla) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.sigla = sigla;

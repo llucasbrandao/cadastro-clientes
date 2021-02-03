@@ -64,14 +64,14 @@ public class DBInit {
 				CidadeEntity cidadeEntity = new CidadeEntity();
 				
 				cidadeEntity.setNome("Belo Horizonte");
-				cidadeEntity.setEstado(this.estadoRepository.findBySiglaEstado("MG"));
+				cidadeEntity.setEstado(this.estadoRepository.findBySiglaEstado("MG").get());
 				
 				this.cidadeRepository.saveAndFlush(cidadeEntity);
 				
 				cidadeEntity = new CidadeEntity();
 				
 				cidadeEntity.setNome("Porto Alegre");
-				cidadeEntity.setEstado(this.estadoRepository.findBySiglaEstado("RS"));
+				cidadeEntity.setEstado(this.estadoRepository.findBySiglaEstado("RS").get());
 				
 				this.cidadeRepository.saveAndFlush(cidadeEntity);
 				

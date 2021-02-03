@@ -23,9 +23,7 @@ public class ClienteDTO {
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dataNascimento;
 	
-	private String cidade;
-	
-	private String estado;
+	private CidadeDTO cidade;
 	
 	private Boolean isAdmin;
 	
@@ -35,8 +33,8 @@ public class ClienteDTO {
 	
 	public ClienteDTO() {}
 
-	public ClienteDTO(Integer id, String nomeCompleto, String email, SexoEnum sexo, Date dataNascimento, String cidade,
-			String estado, Boolean isAdmin, String senha) {
+	public ClienteDTO(Integer id, String nomeCompleto, String email, SexoEnum sexo, Date dataNascimento, CidadeDTO cidade,
+			Boolean isAdmin, String senha) {
 		
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
@@ -44,21 +42,19 @@ public class ClienteDTO {
 		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
 		this.cidade = cidade;
-		this.estado = estado;
 		this.isAdmin = isAdmin;
 		this.senha = senha;
 	}
 
-	public ClienteDTO(Integer id, String nomeCompleto, String email, SexoEnum sexo, Date dataNascimento, String cidade,
-			String estado, Boolean isAdmin, String senha, Integer idade) {
-		super();
+	public ClienteDTO(Integer id, String nomeCompleto, String email, SexoEnum sexo, Date dataNascimento, CidadeDTO cidade,
+			Boolean isAdmin, String senha, Integer idade) {
+		
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
 		this.email = email;
 		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
 		this.cidade = cidade;
-		this.estado = estado;
 		this.isAdmin = isAdmin;
 		this.senha = senha;
 		this.idade = idade;
@@ -120,20 +116,12 @@ public class ClienteDTO {
 		this.senha = senha;
 	}
 
-	public String getCidade() {
+	public CidadeDTO getCidade() {
 		return cidade;
 	}
 
-	public void setCidade(String cidade) {
+	public void setCidade(CidadeDTO cidade) {
 		this.cidade = cidade;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
 	}
 
 	public Integer getIdade() {

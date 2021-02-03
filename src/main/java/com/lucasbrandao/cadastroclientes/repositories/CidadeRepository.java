@@ -13,7 +13,7 @@ public interface CidadeRepository extends JpaRepository<CidadeEntity, Integer>{
 	@Query(value = "SELECT * FROM CIDADES WHERE NOME = :nome", nativeQuery = true)
 	Optional<CidadeEntity> findByNome(@Param("nome") String nome);
 	
-	@Query(value = "SELECT * FROM CIDADES c"
+	@Query(value = "SELECT c.ID, c.NOME FROM CIDADES c"
 			+ " INNER JOIN ESTADOS e"
 			+ " ON e.ID = c.ESTADO_ID"
 			+ " WHERE c.NOME = :nome AND e.SIGLA = :sigla", nativeQuery = true)

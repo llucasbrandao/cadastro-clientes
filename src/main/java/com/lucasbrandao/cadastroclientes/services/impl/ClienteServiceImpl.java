@@ -42,7 +42,7 @@ public class ClienteServiceImpl implements ClienteServiceInterface {
 			
 			ClienteEntity clienteEntity = this.clienteMapper.fromDTO(clienteDTO);
 			
-			clienteEntity.setCidade(cidadeService.buscarPorNomeAndSiglaEstado(clienteDTO.getCidade(), clienteDTO.getEstado()));
+			clienteEntity.setCidade(cidadeService.buscarPorNomeAndSiglaEstado(clienteDTO.getCidade().getNome(), clienteDTO.getCidade().getEstado().getSigla()));
 			clienteEntity.setSenha(B_CRIPT.encode(clienteDTO.getSenha()));
 			
 			this.clienteRepository.saveAndFlush(clienteEntity);
@@ -55,19 +55,21 @@ public class ClienteServiceImpl implements ClienteServiceInterface {
 	@Transactional
 	@Override
 	public void editarCliente(ClienteDTO clienteDTO) {
-		if (clienteDTO.getId() != null && clienteDTO.getId() != getAuthenticated().getID() 
+		if (clienteDTO.getId() == null) {
+			clienteDTO.setId(getAuthenticated().getID());
+		}
+				
+		if (clienteDTO.getId() != getAuthenticated().getID() 
 				|| clienteDTO.getIsAdmin() != null) {
 			
 			this.isAdmin();
 		}
 		
 		try {
-			ClienteEntity clienteEntity = clienteRepository.findById(clienteDTO.getId() != null ? clienteDTO.getId() : getAuthenticated().getID()).get();
+			ClienteEntity clienteEntity = clienteMapper.fromDTO(clienteDTO);
 			
-			clienteMapper.atualizaClienteFromDTO(clienteDTO, clienteEntity);
-			
-			if (clienteDTO.getCidade() != null && clienteDTO.getEstado() != null) {
-				clienteEntity.setCidade(cidadeService.buscarPorNomeAndSiglaEstado(clienteDTO.getCidade(), clienteDTO.getEstado()));
+			if (clienteDTO.getCidade() != null && clienteDTO.getCidade().getEstado() != null) {
+				clienteEntity.setCidade(cidadeService.buscarPorNomeAndSiglaEstado(clienteDTO.getCidade().getNome(), clienteDTO.getCidade().getEstado().getSigla()));
 			}
 			
 			if (clienteDTO.getSenha() != null) {
