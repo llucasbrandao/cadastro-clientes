@@ -32,7 +32,9 @@ Todas as variáveis são de preenchimento obrigatório.
 Caso tenha o Docker e Docker-Compose instalados na máquina, acesse a pasta `./docker` e rode o comando `docker-compose up -d`. Aguarde alguns segundos e tente acessar qualquer endpoint ([verificar a seção "Swagger, Endpoints e Login"](#swagger-endpoints-e-login)).
 
 ### Manualmente
-Para rodar manualmente, você precisará instalar ou usar o MySQL > 8 na nuvem. 
+Para rodar manualmente, você precisará instalar ou usar o MySQL > 8 na nuvem. É só usar alguma IDE [(como o STS)](https://spring.io/tools) e executar a aplicação do modo tradicional.
+
+**Certifique-se de configurar as variáveis de ambiente**.
 
 ## Swagger, Endpoints e Login
 
@@ -45,8 +47,10 @@ Para todos os endpoints (exceto o **"Swagger-UI"**), um token JWT é necessário
 Faça uma requisição **POST** para `/login`, com o body JSON:
 
 ```json
-    "email": "email@email.com",
-    "password": "password"
+    {
+        "email": "email@email.com",
+        "password": "password"
+    }
 ```
 
 Se o e-mail e a senha forem válidos, o token JWT será devolvido no header `"Authorization"` da response.
@@ -63,15 +67,19 @@ São dois usuários, 2 cidades e 2 Estados.
 #### Comum
 
 ```json
-    "email": "usuario@usuario.com.br",
-    "password": "123456"
+    {
+        "email": "usuario@usuario.com.br",
+        "password": "123456"
+    }
 ```
 
 #### Administrador
 
 ```json
-    "email": "admin@admin.com.br",
-    "password": "123456"
+    {
+        "email": "admin@admin.com.br",
+        "password": "123456"
+    }
 ```
 
 ## Tabelas e Migrations
