@@ -1,10 +1,38 @@
 version: '3.5'
-services: 
+services:
+# API backend service
+  api-server:
+    container_name: cadastroclientes
+    # Configuration for building the docker image for the backend service
+    #build:
+    #context: / # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+    #dockerfile: /
+    # If docker-compose build fails, try specifying the image below and remove the dockerfile: /
+    image: llucasbrandao/cadastroclientes:v0.0.3
+    ports:
+      - "8080:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    restart: always
+    depends_on: 
+      - mysql # This service depends on MySQL. Start that first.
+    env_file: 
+      - ../env/config.env
+    networks:
+      - backend
+
   mysql:
     image: mysql:8.0.22
     container_name: mysql
     env_file: 
       - ../env/config.env
-    volumes: 
-      - ./mysql:/var/lib/mysql
+    volumes:
+      - db-data:/var/lib/mysql
       - ./my.cnf:/etc/mysql/my.cnf
+    networks: 
+      - backend
+  
+volumes: 
+  db-data:
+
+networks: 
+  backend:
+    driver: bridge

@@ -38,6 +38,14 @@ public class JWTUtil {
 				.compact();
 	}
 	
+	public static String generateTestToken(String email) {
+		return Jwts.builder()
+				.setSubject(email)
+				.setExpiration(new Date(System.currentTimeMillis() + 8888888))
+				.signWith(SignatureAlgorithm.HS512, "123456".getBytes())
+				.compact();
+	}
+	
 	/*
 	 * Se o token tem um e-mail válido e a data de expiração é inferior a atual do sistema, o token é válido
 	 */
